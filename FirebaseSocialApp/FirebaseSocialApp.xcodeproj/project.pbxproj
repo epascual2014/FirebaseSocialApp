@@ -13,6 +13,7 @@
 		61794DA31D564525006D0589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61794DA21D564525006D0589 /* Assets.xcassets */; };
 		61794DA61D564525006D0589 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61794DA41D564525006D0589 /* LaunchScreen.storyboard */; };
 		61794DAE1D564561006D0589 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61794DAD1D564561006D0589 /* GoogleService-Info.plist */; };
+		61794DBA1D56581F006D0589 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61794DB91D56581F006D0589 /* CustomView.swift */; };
 		F4594D16422A29091C67619B /* Pods_FirebaseSocialApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5754EB0A0C2C59484D224AF /* Pods_FirebaseSocialApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		61794DA51D564525006D0589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61794DA71D564525006D0589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61794DAD1D564561006D0589 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		61794DB91D56581F006D0589 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		C5754EB0A0C2C59484D224AF /* Pods_FirebaseSocialApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseSocialApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -63,15 +65,40 @@
 		61794D9A1D564525006D0589 /* FirebaseSocialApp */ = {
 			isa = PBXGroup;
 			children = (
+				61794DB61D5657BE006D0589 /* Views */,
+				61794DB51D5657B5006D0589 /* Controllers */,
+				61794DB41D5657AF006D0589 /* Model */,
 				61794D9B1D564525006D0589 /* AppDelegate.swift */,
-				61794D9D1D564525006D0589 /* ViewController.swift */,
-				61794D9F1D564525006D0589 /* Main.storyboard */,
 				61794DA21D564525006D0589 /* Assets.xcassets */,
+			);
+			path = FirebaseSocialApp;
+			sourceTree = "<group>";
+		};
+		61794DB41D5657AF006D0589 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				61794DB91D56581F006D0589 /* CustomView.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		61794DB51D5657B5006D0589 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				61794D9D1D564525006D0589 /* ViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		61794DB61D5657BE006D0589 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				61794D9F1D564525006D0589 /* Main.storyboard */,
 				61794DA41D564525006D0589 /* LaunchScreen.storyboard */,
 				61794DA71D564525006D0589 /* Info.plist */,
 				61794DAD1D564561006D0589 /* GoogleService-Info.plist */,
 			);
-			path = FirebaseSocialApp;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		B7760523B071A60FBA03D73D /* Frameworks */ = {
@@ -216,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61794DBA1D56581F006D0589 /* CustomView.swift in Sources */,
 				61794D9E1D564525006D0589 /* ViewController.swift in Sources */,
 				61794D9C1D564525006D0589 /* AppDelegate.swift in Sources */,
 			);
