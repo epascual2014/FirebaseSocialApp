@@ -10,13 +10,26 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftKeychainWrapper
 
 class LoginViewController: UIViewController {
-
-    @IBOutlet weak var facebookButton: RoundButton!
     
+    @IBOutlet weak var facebookButton: RoundButton!
     @IBOutlet weak var emailTextfield: CustomTextfield!
     @IBOutlet weak var passwordTextfield: CustomTextfield!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if KeychainWrapper.stringForKey(KEY_UID) != nil {
+            performSegue(withIdentifier: "goToMain", sender: nil)
+        }
+        
+    }
     
     @IBAction func facebookActionTapped(_ sender: AnyObject) {
         
@@ -44,37 +57,57 @@ class LoginViewController: UIViewController {
                 print("ED: Unable to auth w/ Firebase - \(error)")
             } else {
                 print("ED: Successful Firebase Auth")
+                if let user = user {
+                    self.completeSignIn(id: user.uid)
+                }
             }
         })
     }
-
+    
+    // Signin Button
     @IBAction func signinButtonTapped(_ sender: AnyObject) {
         if let email = emailTextfield.text, let password = passwordTextfield.text {
+            
+            // Firebase Authentication when user signs in
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                 if error == nil {
                     print("ED: Email user auth with Firebase")
+                    if let user = user {
+                        self.completeSignIn(id: user.uid)
+                    }
+                   
                 } else {
-                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                        if error != nil {
-                            print("ED: Unable to auth Firebase w/ Email")
-                        } else {
-                            print("ED: Successfull auth with Firebase")
-                        }
-                    })
+                    self.createUser()
                 }
             })
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    // If user is new, create user
+    func createUser() {
+        if let email = emailTextfield.text, let password = passwordTextfield.text {
+            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+                if error != nil {
+                    print("ED: Unable to auth Firebase w/ Email")
+                } else {
+                    print("ED: Successfull auth with Firebase")
+                    if let user = user {
+                        self.completeSignIn(id: user.uid)
+                    }
+                    
+                }
+            })
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // Uses Keychain Framework to save user IDs
+    func completeSignIn(id: String) {
+        let keychainResult = KeychainWrapper.setString(id, forKey: KEY_UID)
+        print("ED: Data saved to keychain - \(keychainResult)")
+        performSegue(withIdentifier: "goToMain", sender: nil)
     }
+    
 
+    
+    
 }

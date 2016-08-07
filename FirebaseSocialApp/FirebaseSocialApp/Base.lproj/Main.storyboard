@@ -34,7 +34,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTJ-bV-c7x">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If you have not signed in before, an account will be created" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lpA-W6-fOo">
-                                        <frame key="frameInset" minX="27" minY="8" width="320" height="59"/>
+                                        <frame key="frameInset" minX="27" minY="8" width="278" height="59"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
@@ -109,11 +109,45 @@
                         <outlet property="emailTextfield" destination="VOb-lQ-FlI" id="v4k-IT-dDX"/>
                         <outlet property="facebookButton" destination="etc-gK-2MY" id="kEq-IV-04H"/>
                         <outlet property="passwordTextfield" destination="HBJ-Yr-yhn" id="qtJ-gk-tMm"/>
+                        <segue destination="a9F-6z-SEM" kind="show" identifier="goToMain" id="UoL-Lc-nLH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="25" y="36"/>
+            <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
+        </scene>
+        <!--Main Feed View Controller-->
+        <scene sceneID="mh9-xC-n0V">
+            <objects>
+                <viewController id="a9F-6z-SEM" customClass="MainFeedViewController" customModule="FirebaseSocialApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qfr-gr-NMP"/>
+                        <viewControllerLayoutGuide type="bottom" id="qh7-9a-YPW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UUI-Xa-4jK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HR6-Ll-B5a">
+                                <frame key="frameInset" minX="28" minY="84" width="90" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOutTapped:" destination="a9F-6z-SEM" eventType="touchUpInside" id="edW-EY-jSq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.050980392156862744" green="0.27843137254901962" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="WOt-KM-HKX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IGB-mv-S9I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="35.532233883058474"/>
         </scene>
     </scenes>
     <resources>
