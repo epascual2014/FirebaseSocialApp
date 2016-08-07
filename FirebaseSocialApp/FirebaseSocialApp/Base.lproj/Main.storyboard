@@ -73,13 +73,16 @@
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HBJ-Yr-yhn" customClass="CustomTextfield" customModule="FirebaseSocialApp" customModuleProvider="target">
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dw0-l3-6Y2" customClass="CustomButton" customModule="FirebaseSocialApp" customModuleProvider="target">
                                         <color key="backgroundColor" red="0.39215686274509803" green="0.70980392156862748" blue="0.96470588235294119" alpha="0.87" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DFe-df-dG2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -103,12 +106,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTextfield" destination="VOb-lQ-FlI" id="v4k-IT-dDX"/>
                         <outlet property="facebookButton" destination="etc-gK-2MY" id="kEq-IV-04H"/>
+                        <outlet property="passwordTextfield" destination="HBJ-Yr-yhn" id="qtJ-gk-tMm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.19999999999999" y="51.724137931034484"/>
+            <point key="canvasLocation" x="25" y="36"/>
         </scene>
     </scenes>
     <resources>
