@@ -31,9 +31,10 @@ class LoginViewController: UIViewController {
         
     }
     
+    // MARK: Authentication for Facebook
     @IBAction func facebookActionTapped(_ sender: AnyObject) {
         
-        // Facebook Authentication
+        // Authenticating for FACEBOOK
         let facebookLogin = FBSDKLoginManager()
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
             if error != nil {
@@ -50,7 +51,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    // Firebase Authentication
+    // Authenticating for Firebase
     func firebaseAuth(_ credential: FIRAuthCredential) {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil {
@@ -58,13 +59,15 @@ class LoginViewController: UIViewController {
             } else {
                 print("ED: Successful Firebase Auth")
                 if let user = user {
-                    self.completeSignIn(id: user.uid)
+                    let userData = ["provider": credential.provider]
+                    // Once Firebase is authenticated go ahead and sign in
+                    self.completeSignIn(id: user.uid, userData: userData)
                 }
             }
         })
     }
     
-    // Signin Button
+    // MARK: Signin user
     @IBAction func signinButtonTapped(_ sender: AnyObject) {
         if let email = emailTextfield.text, let password = passwordTextfield.text {
             
@@ -73,17 +76,18 @@ class LoginViewController: UIViewController {
                 if error == nil {
                     print("ED: Email user auth with Firebase")
                     if let user = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
-                   
                 } else {
+                    // Not a user, create new user
                     self.createUser()
                 }
             })
         }
     }
     
-    // If user is new, create user
+    // MARK: Creates user
     func createUser() {
         if let email = emailTextfield.text, let password = passwordTextfield.text {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
@@ -92,7 +96,8 @@ class LoginViewController: UIViewController {
                 } else {
                     print("ED: Successfull auth with Firebase")
                     if let user = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                     
                 }
@@ -101,7 +106,8 @@ class LoginViewController: UIViewController {
     }
     
     // Uses Keychain Framework to save user IDs
-    func completeSignIn(id: String) {
+    func completeSignIn(id: String, userData: [String: AnyObject]) {
+        DataSource.dataSource.createFirebaseUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.setString(id, forKey: KEY_UID)
         print("ED: Data saved to keychain - \(keychainResult)")
         performSegue(withIdentifier: "goToMain", sender: nil)

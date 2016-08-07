@@ -24,6 +24,7 @@ class MainFeedViewController: UIViewController {
         
     }
     
+    // Tap gesture recognizer is linked to this action since the signout is an UIImage
     @IBAction func signOutTapped(_ sender: AnyObject) {
         let keyChainResult = KeychainWrapper.removeObjectForKey(KEY_UID)
         print("ED: ID Removed from keychain - \(keyChainResult)")
