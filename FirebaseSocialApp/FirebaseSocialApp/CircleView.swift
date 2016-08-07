@@ -1,5 +1,5 @@
 //
-//  CustomView.swift
+//  CircleView.swift
 //  FirebaseSocialApp
 //
 //  Created by Edrick Pascual on 8/6/16.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CustomView: UIView {
-
+class CircleView: UIImageView {
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -19,7 +19,13 @@ class CustomView: UIView {
         layer.shadowOpacity = 0.8
         layer.shadowRadius = 5.0
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        layer.cornerRadius = 2.0
+
+        
     }
 
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        layer.cornerRadius = self.frame.width / 2.0
+        
+    }
 }
