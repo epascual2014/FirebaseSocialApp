@@ -16,4 +16,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var likesLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
 }
