@@ -21,6 +21,10 @@ class MainFeedViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        // Reference the Firebase database Class DataSource 
+        DataSource.dataSource.REF_POSTS.observe(.value, with: { (snapShot) in
+            print(snapShot.value)
+        })
         
     }
     
