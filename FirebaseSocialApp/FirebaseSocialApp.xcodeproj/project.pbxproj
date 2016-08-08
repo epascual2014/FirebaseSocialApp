@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		612312EC1D58620E0024E00B /* PhotoTaking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612312EB1D58620E0024E00B /* PhotoTaking.swift */; };
 		61794D9C1D564525006D0589 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61794D9B1D564525006D0589 /* AppDelegate.swift */; };
 		61794DA11D564525006D0589 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61794D9F1D564525006D0589 /* Main.storyboard */; };
 		61794DA31D564525006D0589 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61794DA21D564525006D0589 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		2028D51CF98F622BA248556E /* Pods-FirebaseSocialApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseSocialApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseSocialApp/Pods-FirebaseSocialApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3BA297306B0EEEC3F556CA7F /* Pods-FirebaseSocialApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseSocialApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseSocialApp/Pods-FirebaseSocialApp.release.xcconfig"; sourceTree = "<group>"; };
+		612312EB1D58620E0024E00B /* PhotoTaking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTaking.swift; sourceTree = "<group>"; };
 		61794D981D564525006D0589 /* FirebaseSocialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseSocialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61794D9B1D564525006D0589 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61794DA01D564525006D0589 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				61C907611D571F4000D31627 /* DataSource.swift */,
+				612312EB1D58620E0024E00B /* PhotoTaking.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				6188C9CF1D5672A100FB9EA2 /* RoundButton.swift in Sources */,
 				6188C9D11D5673E400FB9EA2 /* CustomTextfield.swift in Sources */,
 				61E03C5E1D56AB6700B9CB03 /* LoginViewController.swift in Sources */,
+				612312EC1D58620E0024E00B /* PhotoTaking.swift in Sources */,
 				6188C9D31D5674FB00FB9EA2 /* CustomButton.swift in Sources */,
 				61794D9C1D564525006D0589 /* AppDelegate.swift in Sources */,
 				61F6941B1D584C09001B8396 /* Post.swift in Sources */,

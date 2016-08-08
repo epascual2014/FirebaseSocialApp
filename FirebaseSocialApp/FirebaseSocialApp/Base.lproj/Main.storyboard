@@ -160,12 +160,16 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RGG-g7-xsh">
                                         <frame key="frameInset" minX="8" minY="7" width="327" height="49"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="u3l-us-DXU" customClass="CircleView" customModule="FirebaseSocialApp" customModuleProvider="target">
+                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="u3l-us-DXU" customClass="CircleView" customModule="FirebaseSocialApp" customModuleProvider="target">
                                                 <color key="backgroundColor" red="0.082352941176470587" green="0.396078431372549" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="49" id="LwL-2w-FGM"/>
                                                     <constraint firstAttribute="height" constant="49" id="lfT-Po-2qe"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="qDb-ZH-GTw" appends="YES" id="cOU-6T-aMF"/>
+                                                </connections>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add Caption" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5UP-UV-Enc" customClass="CustomTextfield" customModule="FirebaseSocialApp" customModuleProvider="target">
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -299,6 +303,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addImageView" destination="u3l-us-DXU" id="tUS-X0-YkC"/>
                         <outlet property="tableView" destination="Qbg-ru-GAQ" id="GBD-dd-ivB"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="Z3G-4b-65T"/>
                     </connections>
@@ -309,8 +314,13 @@
                         <action selector="signOutTapped:" destination="a9F-6z-SEM" id="Dri-T4-ZIL"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="qDb-ZH-GTw">
+                    <connections>
+                        <action selector="addImageTapped:" destination="a9F-6z-SEM" id="lbj-hk-lqV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="909.60000000000002" y="53.523238380809602"/>
+            <point key="canvasLocation" x="780" y="90"/>
         </scene>
     </scenes>
     <resources>

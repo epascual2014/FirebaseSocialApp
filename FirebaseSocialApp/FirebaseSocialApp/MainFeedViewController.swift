@@ -11,19 +11,33 @@ import Firebase
 import SwiftKeychainWrapper
 
 
-class MainFeedViewController: UIViewController {
+class MainFeedViewController: UIViewController  {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var addImageView: CircleView!
+    
+    // Var referencing Post class
     var posts = [Post]()
 
+    // Initialize UIImagepicker Controller
+    var imagePicker: UIImagePickerController!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        // Reference the Firebase database Class DataSource 
+        // initializing imagepicker controller
+        self.imagePicker = UIImagePickerController()
+        // Allows user to resize image
+        self.imagePicker.allowsEditing = true
+        self.imagePicker.delegate = self
+        
+        
+        // Reference the Firebase database Class DataSource
         DataSource.dataSource.REF_POSTS.observe(.value, with: { (snapshot) in
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
@@ -40,7 +54,6 @@ class MainFeedViewController: UIViewController {
             }
             self.tableView.reloadData()
         })
-        
     }
     
     // Tap gesture recognizer is linked to this action since the signout is an UIImage
@@ -49,6 +62,11 @@ class MainFeedViewController: UIViewController {
         print("ED: ID Removed from keychain - \(keyChainResult)")
         try! FIRAuth.auth()?.signOut()
         performSegue(withIdentifier: "goToSignIn", sender: nil)
+    }
+    
+    
+    @IBAction func addImageTapped(_ sender: AnyObject) {
+        present(imagePicker, animated: true, completion: nil)
     }
     
 }
@@ -75,7 +93,17 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
             return PostTableViewCell()
         }
     }
-    
-    
+}
+
+extension MainFeedViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            addImageView.image = image
+        } else {
+            print("ED: A valid image wasnt selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
     
 }
+
