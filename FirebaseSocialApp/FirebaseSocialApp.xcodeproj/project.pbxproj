@@ -22,6 +22,7 @@
 		61C907621D571F4000D31627 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C907611D571F4000D31627 /* DataSource.swift */; };
 		61E03C5E1D56AB6700B9CB03 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E03C5D1D56AB6700B9CB03 /* LoginViewController.swift */; };
 		61E03C611D56B93300B9CB03 /* MainFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E03C601D56B93300B9CB03 /* MainFeedViewController.swift */; };
+		61F6941B1D584C09001B8396 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F6941A1D584C09001B8396 /* Post.swift */; };
 		F4594D16422A29091C67619B /* Pods_FirebaseSocialApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5754EB0A0C2C59484D224AF /* Pods_FirebaseSocialApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		61E03C5D1D56AB6700B9CB03 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		61E03C5F1D56AE8E00B9CB03 /* FirebaseSocialApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FirebaseSocialApp.entitlements; sourceTree = "<group>"; };
 		61E03C601D56B93300B9CB03 /* MainFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFeedViewController.swift; sourceTree = "<group>"; };
+		61F6941A1D584C09001B8396 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		C5754EB0A0C2C59484D224AF /* Pods_FirebaseSocialApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseSocialApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -101,6 +103,7 @@
 		61794DB41D5657AF006D0589 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				61F6941A1D584C09001B8396 /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				61E03C5E1D56AB6700B9CB03 /* LoginViewController.swift in Sources */,
 				6188C9D31D5674FB00FB9EA2 /* CustomButton.swift in Sources */,
 				61794D9C1D564525006D0589 /* AppDelegate.swift in Sources */,
+				61F6941B1D584C09001B8396 /* Post.swift in Sources */,
 				61C907621D571F4000D31627 /* DataSource.swift in Sources */,
 				61C9075D1D570F9C00D31627 /* PostTableViewCell.swift in Sources */,
 				6188C9CD1D5670A800FB9EA2 /* Constants.swift in Sources */,
