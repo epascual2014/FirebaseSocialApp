@@ -107,11 +107,34 @@ class MainFeedViewController: UIViewController  {
                     
                     // MARK: URL of metadata in FIREBASE Storage
                     let downloadURL = metadata?.downloadURL()?.absoluteString
+                    
+                    if let url = downloadURL {
+                        self.postToFirebase(imageUrl: url)
+                    }
+                    
                 }
             }
         }
     }
+    
+    // MARK: Posting caption and images to Firebase by assigning the elements.
+    func postToFirebase(imageUrl: String) {
+        let post: [String:AnyObject] = ["caption": addCaptionTextfield.text!, "imageUrl": imageUrl, "likes": 0]
+        let firebasePost = DataSource.dataSource.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        
+        // Assign elements
+        addCaptionTextfield.text = ""
+        imageSelected = false
+        addImageView.image = UIImage(named: "add-image")
+        
+        // Refresh tableview to show new posts and captions
+        tableView.reloadData()
+    }
+    
+    
 }
+
 
 // MARK: Extension TableViewDataSource and Delegates
 extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
