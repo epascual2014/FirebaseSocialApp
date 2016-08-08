@@ -15,7 +15,8 @@ class MainFeedViewController: UIViewController  {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addImageView: CircleView!
-    
+    @IBOutlet weak var addCaptionTextfield: CustomTextfield!
+
     // Var referencing Post class
     var posts = [Post]()
 
@@ -24,6 +25,9 @@ class MainFeedViewController: UIViewController  {
     
     // Global
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
+    
+    // Since the selecting image is an image not a button, we have to say that its not an image.
+    var imageSelected = false
 
     
     override func viewDidLoad() {
@@ -48,12 +52,10 @@ class MainFeedViewController: UIViewController  {
                         let key = snap.key
                         let post = Post(postKey: key, postData: postDictionary)
                         self.posts.append(post)
-                        
-                        
                     }
                 }
-                
             }
+            // Reload data to refresh view
             self.tableView.reloadData()
         })
     }
@@ -66,13 +68,52 @@ class MainFeedViewController: UIViewController  {
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
     
-    
+    // MARK: Select image button
     @IBAction func addImageTapped(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    // MARK: Post selected image button
+    @IBAction func postImageTapped(_ sender: AnyObject) {
+        // User must add a caption
+        guard let caption = addCaptionTextfield.text, caption != "" else {
+            print("ED: Caption must be entered")
+            
+            return
+        }
+        //  User must select an image
+        guard let image = addImageView.image, imageSelected == true else {
+            print("ED: Please select an image")
+            
+            return
+        }
+        // MARK: Uncompressing image data to reduce file size
+        if let imageData = UIImageJPEGRepresentation(image, 0.2) {
+            
+            // Create an ID for image to pass into Firebase storage
+            // MARK: Create a unique IDENTIFIER ID
+            let imageUid = NSUUID().uuidString
+            
+            // Initialize - FIREBASE STORAGE METADATA and content type
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            // Putting image data in FIREBASE STORAGE
+            DataSource.dataSource.REF_POST_IMAGES.child(imageUid).put(imageData, metadata: metadata) { (metadata, error) in
+                if error != nil {
+                    print("ED: Unable to upload image to FIR Storage")
+                } else {
+                    print("ED: Successfully  uploaded image to FIR Storage")
+                    
+                    // MARK: URL of metadata in FIREBASE Storage
+                    let downloadURL = metadata?.downloadURL()?.absoluteString
+                }
+            }
+        }
+    }
 }
 
+// MARK: Extension TableViewDataSource and Delegates
 extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,10 +142,12 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: Extension UIImagePickerController
 extension MainFeedViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             addImageView.image = image
+            imageSelected = true
         } else {
             print("ED: A valid image wasnt selected")
         }
