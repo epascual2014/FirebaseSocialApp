@@ -37,7 +37,7 @@ class Post {
         self._likes = likes
     }
     
-    // Convert data from Firebase 
+    // Pass data to Firebase 
     init(postKey: String, postData: [String: AnyObject]) {
         self._postKey = postKey
         

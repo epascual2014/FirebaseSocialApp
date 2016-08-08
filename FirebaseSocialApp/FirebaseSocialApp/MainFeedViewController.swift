@@ -64,12 +64,16 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let post = posts[indexPath.row]
-        print("ED: CAPTION - \(post.caption)")
         
-        return tableView.dequeueReusableCell(withIdentifier: "postTableViewCell") as! PostTableViewCell
-        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "postTableViewCell") as? PostTableViewCell {
+            
+            // if cell has data call configureCell
+            cell.configureCell(post: post)
+            return cell
+        } else {
+            return PostTableViewCell()
+        }
     }
     
     
