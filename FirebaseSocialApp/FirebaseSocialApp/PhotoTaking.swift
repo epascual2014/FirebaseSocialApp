@@ -81,7 +81,7 @@ extension PhotoTakingHelper: UIImagePickerControllerDelegate, UINavigationContro
     }
     
     // Method to cancelling the picker method
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         viewController.dismiss(animated: true, completion: nil)
     }
     

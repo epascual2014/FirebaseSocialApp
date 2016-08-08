@@ -45,6 +45,9 @@ class MainFeedViewController: UIViewController  {
         
         // Reference the Firebase database Class DataSource
         DataSource.dataSource.REF_POSTS.observe(.value, with: { (snapshot) in
+            
+            // Clear the array so when something is like it doesnt reload old array
+            self.posts = []
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
                     print("SNAP: \(snap)")
@@ -154,11 +157,10 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let image = MainFeedViewController.imageCache.object(forKey: post.imageUrl) {
                 cell.configureCell(post: post, image: image)
-                return cell
             } else {
                 cell.configureCell(post: post)
-                return cell
             }
+            return cell
         } else {
             return PostTableViewCell()
         }
