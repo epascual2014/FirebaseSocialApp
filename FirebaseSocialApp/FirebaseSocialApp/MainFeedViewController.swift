@@ -14,7 +14,6 @@ import SwiftKeychainWrapper
 class MainFeedViewController: UIViewController  {
     
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var addImageView: CircleView!
     
     // Var referencing Post class
@@ -23,6 +22,9 @@ class MainFeedViewController: UIViewController  {
     // Initialize UIImagepicker Controller
     var imagePicker: UIImagePickerController!
     
+    // Global
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,9 +88,13 @@ extension MainFeedViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "postTableViewCell") as? PostTableViewCell {
             
-            // if cell has data call configureCell
-            cell.configureCell(post: post)
-            return cell
+            if let image = MainFeedViewController.imageCache.object(forKey: post.imageUrl) {
+                cell.configureCell(post: post, image: image)
+                return cell
+            } else {
+                cell.configureCell(post: post)
+                return cell
+            }
         } else {
             return PostTableViewCell()
         }
