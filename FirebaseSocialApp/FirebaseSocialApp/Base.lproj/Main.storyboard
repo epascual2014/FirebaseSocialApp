@@ -112,7 +112,7 @@
                         <outlet property="facebookButton" destination="etc-gK-2MY" id="kEq-IV-04H"/>
                         <outlet property="passwordTextfield" destination="HBJ-Yr-yhn" id="qtJ-gk-tMm"/>
                         <segue destination="KXb-tD-D0L" kind="show" identifier="goToMain" id="Bvy-m1-A7m"/>
-                        <segue destination="Ktz-My-8z8" kind="show" identifier="goToCreateUser" id="YBe-Ih-6g7"/>
+                        <segue destination="Ktz-My-8z8" kind="presentation" identifier="createUser" id="Y4D-hd-RkD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -347,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lli-Mr-lTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3556" y="467.3163418290855"/>
+            <point key="canvasLocation" x="4495.1999999999998" y="467.3163418290855"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WL7-Ry-QC8">
@@ -366,7 +366,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8FT-1R-a9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="570" y="59"/>
+            <point key="canvasLocation" x="1254" y="172"/>
         </scene>
         <!--Groups-->
         <scene sceneID="8ET-dj-2hX">
@@ -401,7 +401,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34c-uc-r4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3060" y="-251"/>
+            <point key="canvasLocation" x="3999.1999999999998" y="-251.42428785607197"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="zOq-n1-erX">
@@ -453,7 +453,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMK-bG-RXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3744.8000000000002" y="-251.42428785607197"/>
+            <point key="canvasLocation" x="4684" y="-251.42428785607197"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="4eR-Ma-en8">
@@ -472,7 +472,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yOj-gO-SEt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616.8000000000002" y="467.3163418290855"/>
+            <point key="canvasLocation" x="3556" y="467.3163418290855"/>
         </scene>
         <!--Item-->
         <scene sceneID="DCc-cc-SnE">
@@ -491,9 +491,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zbo-Pq-s3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2370" y="-250"/>
+            <point key="canvasLocation" x="3308" y="-250.52473763118442"/>
         </scene>
-        <!--Create User View Controller-->
+        <!--Create Profile-->
         <scene sceneID="W88-zu-yOF">
             <objects>
                 <viewController id="Ktz-My-8z8" customClass="CreateUserViewController" customModule="FirebaseSocialApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -523,28 +523,70 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cameraplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="SWA-p4-eyi" customClass="CircleView" customModule="FirebaseSocialApp" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cameraplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="SWA-p4-eyi" customClass="CircleView" customModule="FirebaseSocialApp" customModuleProvider="target">
                                 <frame key="frameInset" minX="63" minY="98" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="kbZ-AI-mH3" appends="YES" id="71v-zO-f9E"/>
+                                </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aP6-fS-zgQ" customClass="CustomButton" customModule="FirebaseSocialApp" customModuleProvider="target">
                                 <frame key="frameInset" minX="56" minY="380" width="176" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="0.050980392156862744" green="0.27843137254901962" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="REGISTER">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.87" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerTapped:" destination="Ktz-My-8z8" eventType="touchUpInside" id="b2a-Kx-qWC"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayi-tq-HUH" customClass="CustomView" customModule="FirebaseSocialApp" customModuleProvider="target">
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.58823529409999997" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="oHH-NP-axY"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bt-D1-YwR">
+                                <frame key="frameInset" minX="16" minY="20" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="CANCEL">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="Ktz-My-8z8" eventType="touchUpInside" id="mts-kF-SCr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ayi-tq-HUH" secondAttribute="trailing" id="VmF-LW-vtu"/>
+                            <constraint firstItem="ayi-tq-HUH" firstAttribute="leading" secondItem="Xvp-1V-jow" secondAttribute="leading" id="YUo-VG-URa"/>
+                            <constraint firstItem="ayi-tq-HUH" firstAttribute="top" secondItem="Xvp-1V-jow" secondAttribute="top" id="lDJ-17-hiM"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Create Profile" id="eiz-vx-WMz">
+                        <barButtonItem key="leftBarButtonItem" title="cancel" id="XNk-fx-5U6">
+                            <connections>
+                                <segue destination="S4I-R7-uIV" kind="unwind" unwindAction="unwindFor:towardsViewController:" id="xCX-nB-q6m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="userEmailTextfield" destination="CtC-RW-G7R" id="Ga7-5d-Y5G"/>
                         <outlet property="userImageview" destination="SWA-p4-eyi" id="LoT-HB-wHL"/>
                         <outlet property="userPasswordTextfield" destination="4B3-mR-BjN" id="GNC-Fy-BxK"/>
                         <outlet property="usernameTextfield" destination="3oH-1O-Jup" id="2kL-u4-ubB"/>
+                        <segue destination="KXb-tD-D0L" kind="presentation" identifier="newUserLoggedIn" id="anl-k5-rg2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z5v-qC-I9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="S4I-R7-uIV" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="kbZ-AI-mH3"/>
             </objects>
-            <point key="canvasLocation" x="-274" y="129"/>
+            <point key="canvasLocation" x="157.59999999999999" y="279.31034482758622"/>
         </scene>
     </scenes>
     <resources>
@@ -560,4 +602,7 @@
         <image name="profile-1" width="25" height="19"/>
         <image name="sign-out" width="92" height="65"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="anl-k5-rg2"/>
+    </inferredMetricsTieBreakers>
 </document>

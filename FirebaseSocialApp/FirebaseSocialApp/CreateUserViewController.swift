@@ -18,22 +18,34 @@ class CreateUserViewController: UIViewController {
     @IBOutlet weak var userEmailTextfield: CustomTextfield!
     @IBOutlet weak var userPasswordTextfield: CustomTextfield!
     
+    
+    @IBAction func cancelButtonTapped(_ sender: AnyObject) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    @IBAction func registerTapped(_ sender: CustomButton) {
+        createUser()
+    }
 
     // MARK: Create user
     func createUser() {
-        if let email = userEmailTextfield.text, let password = userPasswordTextfield.text {
+        if let email = userEmailTextfield.text, password = userPasswordTextfield.text, userName = usernameTextfield.text {
+            
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 if error != nil {
                     print("ED: Unable to auth Firebase w/ Email")
-                    self.loginErrorAlert(title: "Oops!", message: "Having some trouble creating your account. Please try again.")
                 } else {
                     print("ED: Successfull auth with Firebase")
                     if let user = user {
-                        let userData = ["provider": user.providerID]
+                        let userData = ["provider": user.providerID,
+                                        "email": email,
+                                        "username": userName]
                         // TO DO add username
                         //let user = ["provider": authData.provider!, "email": email!, "username": username!]
                         
@@ -50,7 +62,7 @@ class CreateUserViewController: UIViewController {
         DataSource.dataSource.createFirebaseUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.setString(id, forKey: KEY_UID)
         print("ED: Data saved to keychain - \(keychainResult)")
-        performSegue(withIdentifier: "goToMain", sender: nil)
+        self.performSegue(withIdentifier: "newUserLoggedIn", sender: nil)
     }
 
     
@@ -63,7 +75,5 @@ class CreateUserViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
-    
-
 
 }

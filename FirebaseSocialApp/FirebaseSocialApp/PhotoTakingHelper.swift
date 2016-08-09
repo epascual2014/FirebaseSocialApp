@@ -1,5 +1,5 @@
 //
-//  PhotoTaking.swift
+//  PhotoTakingHelper.swift
 //  FirebaseSocialApp
 //
 //  Created by Edrick Pascual on 8/7/16.
@@ -33,6 +33,7 @@ class PhotoTakingHelper: NSObject {
         showPhotoSourceSelection()
         
     }
+    
     
     // Implementing photo taking method
     func showImagePickerController(sourceType: UIImagePickerControllerSourceType) {

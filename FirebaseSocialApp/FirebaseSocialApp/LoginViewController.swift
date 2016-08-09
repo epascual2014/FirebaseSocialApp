@@ -90,7 +90,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func registerTappedButton(_ sender: AnyObject) {
         // Not a user, create new user
-        performSegue(withIdentifier: "goToCreateUser", sender: nil)
+        performSegue(withIdentifier: "createUser", sender: nil)
     }
     
     // Uses Keychain Framework to save user IDs
@@ -109,5 +109,6 @@ class LoginViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
     
 }

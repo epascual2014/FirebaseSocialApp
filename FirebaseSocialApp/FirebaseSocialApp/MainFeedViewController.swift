@@ -20,6 +20,8 @@ class MainFeedViewController: UIViewController  {
     // Var referencing Post class
     var posts = [Post]()
 
+    var photoTakingHelper: PhotoTakingHelper!
+    
     // Initialize UIImagepicker Controller
     var imagePicker: UIImagePickerController!
     
@@ -38,6 +40,7 @@ class MainFeedViewController: UIViewController  {
         
         // initializing imagepicker controller
         self.imagePicker = UIImagePickerController()
+        
         // Allows user to resize image
         self.imagePicker.allowsEditing = true
         self.imagePicker.delegate = self
@@ -74,7 +77,7 @@ class MainFeedViewController: UIViewController  {
     
     // MARK: Select image button
     @IBAction func addImageTapped(_ sender: AnyObject) {
-        present(imagePicker, animated: true, completion: nil)
+        present(photoTakingHelper.imagePickerController!, animated: true, completion: nil)
     }
     
     // MARK: Post selected image button
@@ -135,8 +138,6 @@ class MainFeedViewController: UIViewController  {
         // Refresh tableview to show new posts and captions
         tableView.reloadData()
     }
-    
-    
 }
 
 
