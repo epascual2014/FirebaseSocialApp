@@ -46,8 +46,9 @@ class MainFeedViewController: UIViewController  {
         // Reference the Firebase database Class DataSource
         DataSource.dataSource.REF_POSTS.observe(.value, with: { (snapshot) in
             
-            // Clear the array so when something is like it doesnt reload old array
+            // Clear the posts in the array so deletes the duplicate posts when it loads.
             self.posts = []
+            
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
                     print("SNAP: \(snap)")

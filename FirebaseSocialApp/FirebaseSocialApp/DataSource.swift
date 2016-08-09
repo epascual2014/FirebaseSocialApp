@@ -54,7 +54,7 @@ class DataSource {
     
     
     
-    // MARK: Functions to get user whether they are a FIREBASE USER or FACEBOOK USER
+    // MARK: Functions to create a FIREBASE user
     func createFirebaseUser(uid: String, userData: [String: AnyObject]) {
         /* If there is a new user, Firebase creates an object.
         //If data doesnt exists, data is added otherwise if the data exists, do not overwrite and add data. */

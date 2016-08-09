@@ -11,4 +11,5 @@ import UIKit
 // Constant of shadow color
 let SHADOW_GRAY: CGFloat = 120.0 / 255.0
 
+// Constant of user id
 let KEY_UID = "uid"

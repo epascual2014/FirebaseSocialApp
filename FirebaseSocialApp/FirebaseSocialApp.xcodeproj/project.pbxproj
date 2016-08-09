@@ -18,6 +18,11 @@
 		6188C9CF1D5672A100FB9EA2 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6188C9CE1D5672A100FB9EA2 /* RoundButton.swift */; };
 		6188C9D11D5673E400FB9EA2 /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6188C9D01D5673E400FB9EA2 /* CustomTextfield.swift */; };
 		6188C9D31D5674FB00FB9EA2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6188C9D21D5674FB00FB9EA2 /* CustomButton.swift */; };
+		61A7F7B81D594D9E000DE961 /* MainGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7F7B71D594D9E000DE961 /* MainGroupsTableViewController.swift */; };
+		61A7F7BA1D594FF8000DE961 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7F7B91D594FF8000DE961 /* Group.swift */; };
+		61A7F7BC1D5950D6000DE961 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7F7BB1D5950D6000DE961 /* User.swift */; };
+		61A7F7BE1D595CD3000DE961 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7F7BD1D595CD3000DE961 /* CreateUserViewController.swift */; };
+		61A7F7C01D5994CD000DE961 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7F7BF1D5994CD000DE961 /* Todo.swift */; };
 		61C907591D56E6AC00D31627 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C907581D56E6AC00D31627 /* CircleView.swift */; };
 		61C9075D1D570F9C00D31627 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C9075C1D570F9C00D31627 /* PostTableViewCell.swift */; };
 		61C907621D571F4000D31627 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C907611D571F4000D31627 /* DataSource.swift */; };
@@ -43,6 +48,11 @@
 		6188C9CE1D5672A100FB9EA2 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		6188C9D01D5673E400FB9EA2 /* CustomTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
 		6188C9D21D5674FB00FB9EA2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		61A7F7B71D594D9E000DE961 /* MainGroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainGroupsTableViewController.swift; sourceTree = "<group>"; };
+		61A7F7B91D594FF8000DE961 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		61A7F7BB1D5950D6000DE961 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		61A7F7BD1D595CD3000DE961 /* CreateUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		61A7F7BF1D5994CD000DE961 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		61C907581D56E6AC00D31627 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		61C9075C1D570F9C00D31627 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		61C907611D571F4000D31627 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -87,13 +97,13 @@
 			isa = PBXGroup;
 			children = (
 				61E03C5F1D56AE8E00B9CB03 /* FirebaseSocialApp.entitlements */,
+				61794D9F1D564525006D0589 /* Main.storyboard */,
 				61C9075E1D571EE100D31627 /* Services */,
 				6188C9CB1D56709500FB9EA2 /* Utility */,
 				61794DB61D5657BE006D0589 /* Views */,
 				61794DB51D5657B5006D0589 /* Controllers */,
 				61794DB41D5657AF006D0589 /* Model */,
 				61794D9B1D564525006D0589 /* AppDelegate.swift */,
-				61794D9F1D564525006D0589 /* Main.storyboard */,
 				61794DA41D564525006D0589 /* LaunchScreen.storyboard */,
 				61794DA71D564525006D0589 /* Info.plist */,
 				61794DAD1D564561006D0589 /* GoogleService-Info.plist */,
@@ -106,6 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				61F6941A1D584C09001B8396 /* Post.swift */,
+				61A7F7B91D594FF8000DE961 /* Group.swift */,
+				61A7F7BB1D5950D6000DE961 /* User.swift */,
+				61A7F7BF1D5994CD000DE961 /* Todo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -115,6 +128,8 @@
 			children = (
 				61E03C5D1D56AB6700B9CB03 /* LoginViewController.swift */,
 				61E03C601D56B93300B9CB03 /* MainFeedViewController.swift */,
+				61A7F7B71D594D9E000DE961 /* MainGroupsTableViewController.swift */,
+				61A7F7BD1D595CD3000DE961 /* CreateUserViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -297,15 +312,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61A7F7B81D594D9E000DE961 /* MainGroupsTableViewController.swift in Sources */,
 				61C907591D56E6AC00D31627 /* CircleView.swift in Sources */,
 				61794DBA1D56581F006D0589 /* CustomView.swift in Sources */,
+				61A7F7BA1D594FF8000DE961 /* Group.swift in Sources */,
+				61A7F7BC1D5950D6000DE961 /* User.swift in Sources */,
 				6188C9CF1D5672A100FB9EA2 /* RoundButton.swift in Sources */,
 				6188C9D11D5673E400FB9EA2 /* CustomTextfield.swift in Sources */,
 				61E03C5E1D56AB6700B9CB03 /* LoginViewController.swift in Sources */,
 				612312EC1D58620E0024E00B /* PhotoTaking.swift in Sources */,
 				6188C9D31D5674FB00FB9EA2 /* CustomButton.swift in Sources */,
+				61A7F7BE1D595CD3000DE961 /* CreateUserViewController.swift in Sources */,
 				61794D9C1D564525006D0589 /* AppDelegate.swift in Sources */,
 				61F6941B1D584C09001B8396 /* Post.swift in Sources */,
+				61A7F7C01D5994CD000DE961 /* Todo.swift in Sources */,
 				61C907621D571F4000D31627 /* DataSource.swift in Sources */,
 				61C9075D1D570F9C00D31627 /* PostTableViewCell.swift in Sources */,
 				6188C9CD1D5670A800FB9EA2 /* Constants.swift in Sources */,

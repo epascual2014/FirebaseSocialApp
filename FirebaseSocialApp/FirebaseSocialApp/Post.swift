@@ -11,11 +11,12 @@ import Firebase
 
 class Post {
     
+    private var _postRef: FIRDatabaseReference!
     private var _caption: String!
     private var _imageUrl: String!
     private var _likes: Int!
     private var _postKey: String!
-    private var _postRef: FIRDatabaseReference!
+    private var _username: String!
     
     var caption: String {
         return _caption
@@ -33,10 +34,15 @@ class Post {
         return _postKey
     }
     
-    init(caption: String, imageUrl: String, likes: Int) {
+    var username: String {
+        return _username
+    }
+    
+    init(caption: String, imageUrl: String, likes: Int, username: String) {
         self._caption = caption
         self._imageUrl = caption
         self._likes = likes
+        self._username = username
     }
     
     // Pass data to Firebase 
@@ -53,6 +59,10 @@ class Post {
         
         if let likes = postData["likes"] as? Int {
             self._likes = likes
+        }
+        
+        if let username = postData["username"] as? String {
+            self._username = username
         }
         
         _postRef = DataSource.dataSource.REF_POSTS.child(_postKey)

@@ -25,6 +25,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+    
+        // Stores user ID so user does not need to sign in if they are already a user.
         if KeychainWrapper.stringForKey(KEY_UID) != nil {
             performSegue(withIdentifier: "goToMain", sender: nil)
         }
@@ -78,31 +80,17 @@ class LoginViewController: UIViewController {
                     if let user = user {
                         let userData = ["provider": user.providerID]
                         self.completeSignIn(id: user.uid, userData: userData)
+                    } else {
+                        self.loginErrorAlert(title: "Oops!", message: "Having some trouble creating your account. Please try again.")
                     }
-                } else {
-                    // Not a user, create new user
-                    self.createUser()
                 }
             })
         }
     }
     
-    // MARK: Creates user
-    func createUser() {
-        if let email = emailTextfield.text, let password = passwordTextfield.text {
-            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                if error != nil {
-                    print("ED: Unable to auth Firebase w/ Email")
-                } else {
-                    print("ED: Successfull auth with Firebase")
-                    if let user = user {
-                        let userData = ["provider": user.providerID]
-                        self.completeSignIn(id: user.uid, userData: userData)
-                    }
-                    
-                }
-            })
-        }
+    @IBAction func registerTappedButton(_ sender: AnyObject) {
+        // Not a user, create new user
+        performSegue(withIdentifier: "goToCreateUser", sender: nil)
     }
     
     // Uses Keychain Framework to save user IDs
@@ -113,7 +101,13 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier: "goToMain", sender: nil)
     }
     
-
-    
+    // MARK: Login Error Message
+    func loginErrorAlert(title: String, message: String) {
+        // If login does not work call error message
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
     
 }
